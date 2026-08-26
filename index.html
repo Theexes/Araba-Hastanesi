@@ -6,13 +6,14 @@
     <title>Pro Arşiv | Dijital Sinema & Dizi Merkezi</title>
     <style>
         :root {
-            --bg-color: #090d16;
-            --card-bg: #131b2e;
-            --card-hover: #1a243f;
+            --bg-color: #07090e;
+            --card-bg: #111827;
+            --card-hover: #1f2937;
             --accent: #e50914;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #1e293b;
+            --accent-glow: rgba(229, 9, 20, 0.25);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border: #1f2937;
         }
 
         * {
@@ -26,33 +27,44 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 24px 16px;
+            padding: 20px 16px 40px 16px;
             max-width: 500px;
             margin: 0 auto;
             min-height: 100vh;
         }
 
-        /* Üst Header Alanı */
+        /* Üst Header ve Logo Alanı */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-top: 10px;
+            margin-bottom: 25px;
+            padding-top: 15px;
+        }
+
+        .logo-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #ff4d4d);
+            color: white;
+            font-weight: 900;
+            font-size: 11px;
+            letter-spacing: 2px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px var(--accent-glow);
         }
 
         .header h1 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 800;
-            letter-spacing: 1.5px;
-            background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
         }
 
         .header p {
             font-size: 13px;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
         /* Pro Klasör (Details) Tasarımı */
@@ -60,19 +72,19 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             overflow: hidden;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         details[open] {
-            border-color: rgba(229, 9, 20, 0.4);
-            box-shadow: 0 15px 30px -5px rgba(229, 9, 20, 0.1);
+            border-color: rgba(229, 9, 20, 0.5);
+            box-shadow: 0 12px 25px var(--accent-glow);
         }
 
         summary {
-            padding: 20px;
+            padding: 18px 20px;
             font-size: 16px;
             font-weight: 700;
             color: var(--text-main);
@@ -96,8 +108,8 @@
         /* Özel Şık Ok Simgesi */
         summary::after {
             content: "";
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-right: 2px solid var(--accent);
             border-bottom: 2px solid var(--accent);
             transform: rotate(45deg);
@@ -111,25 +123,25 @@
 
         /* İçerik Kutusu */
         .content {
-            padding: 8px 20px 20px 20px;
+            padding: 6px 16px 16px 16px;
             border-top: 1px solid var(--border);
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(3, 7, 18, 0.5);
         }
 
         /* Liste Öğeleri */
         .item {
             display: flex;
             align-items: center;
-            margin-top: 14px;
+            margin-top: 10px;
             padding: 12px 14px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
             transition: all 0.2s;
         }
 
         .item:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
         }
 
         /* Modern Checkbox Tasarımı */
@@ -138,8 +150,8 @@
             -webkit-appearance: none;
             width: 22px;
             height: 22px;
-            border: 2px solid #475569;
-            border-radius: 6px;
+            border: 2px solid #4b5563;
+            border-radius: 7px;
             margin-right: 14px;
             cursor: pointer;
             position: relative;
@@ -151,6 +163,7 @@
         input[type="checkbox"]:checked {
             background-color: var(--accent);
             border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         /* Tik İşareti Efekti */
@@ -167,25 +180,26 @@
 
         label {
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
-            color: #cbd5e1;
+            color: #d1d5db;
             width: 100%;
             transition: color 0.2s;
+            line-height: 1.4;
         }
 
         /* Tik Atıldığında Yazının Soluklaşması */
         input[type="checkbox"]:checked + label {
             text-decoration: line-through;
-            color: #475569;
+            color: #4b5563;
         }
 
         /* Alt Bilgi */
         .footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 35px;
             font-size: 12px;
-            color: #475569;
+            color: #4b5563;
             letter-spacing: 0.5px;
         }
     </style>
@@ -193,8 +207,9 @@
 <body>
 
     <div class="header">
-        <h1>🎬 PRO ARŞİV</h1>
-        <p>Kişisel Sinema & Dizi Takip Paneli</p>
+        <div class="logo-badge">Özel Koleksiyon</div>
+        <h1>DİJİTAL ARŞİV</h1>
+        <p>Film & Dizi Takip Merkezi</p>
     </div>
 
     <!-- 1. KLASÖR: KURTLAR VADİSİ -->
@@ -258,7 +273,7 @@
     </details>
 
     <div class="footer">
-        Özel Tasarım &bull; Saf Kod Mimarisi
+        Mobil Web Uygulaması &bull; v2.0
     </div>
 
 </body>
