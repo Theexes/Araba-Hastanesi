@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Dekor Es Medya | Digital Garage OS</title>
+    <title>Dekor Es Medya | Profesyonel Videografi & Prodüksiyon</title>
     <style>
         :root {
-            --bg-color: #0b0d12;
-            --card-bg: #131722;
-            --card-hover: #1c2234;
-            --accent: #ff2a2a;
-            --accent-glow: rgba(255, 42, 42, 0.3);
-            --text-main: #ffffff;
-            --text-muted: #8e95a5;
-            --border: rgba(255, 255, 255, 0.08);
+            --bg-color: #07090e;
+            --card-bg: #111827;
+            --card-hover: #1f2937;
+            --accent: #e50914;
+            --accent-glow: rgba(229, 9, 20, 0.25);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border: #1f2937;
         }
 
         * {
@@ -24,352 +24,235 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 20px 16px 40px 16px;
+            padding: 24px 16px 50px 16px;
             max-width: 500px;
             margin: 0 auto;
             min-height: 100vh;
         }
 
-        /* Top Bar & Brand */
-        .brand-header {
+        /* Hero / Header Alanı */
+        .hero {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            padding-top: 10px;
         }
 
-        .badge {
+        .logo-badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent), #b30000);
-            color: #fff;
-            font-size: 10px;
+            background: linear-gradient(135deg, var(--accent), #ff4d4d);
+            color: white;
             font-weight: 900;
+            font-size: 11px;
             letter-spacing: 2px;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             box-shadow: 0 4px 15px var(--accent-glow);
-            margin-bottom: 8px;
         }
 
-        .car-title {
+        .hero h1 {
             font-size: 26px;
             font-weight: 900;
             letter-spacing: 0.5px;
+            color: #ffffff;
             text-transform: uppercase;
-            background: linear-gradient(to right, #fff, #8e95a5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
         }
 
-        .car-sub {
+        .hero p {
             font-size: 13px;
             color: var(--text-muted);
-            margin-top: 2px;
+            line-height: 1.5;
         }
 
-        /* Spec Grid (Teknik Özellik Kartları) */
-        .spec-grid {
+        /* Hızlı İletişim Butonları */
+        .action-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        .spec-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px 8px;
-            text-align: center;
-        }
-
-        .spec-val {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .spec-lbl {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Build Progress (Restorasyon Barı) */
-        .build-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        }
-
-        .build-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .build-info span:last-child {
-            color: var(--accent);
-        }
-
-        .bar-bg {
-            width: 100%;
-            height: 8px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #ff6b6b);
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-
-        /* Media & Showreel Section */
-        .media-btn {
+        .btn-primary, .btn-secondary {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            width: 100%;
-            background: linear-gradient(135deg, #1f2430, #131722);
-            border: 1px solid var(--accent);
-            color: #fff;
-            padding: 16px;
+            gap: 8px;
+            padding: 14px;
             border-radius: 14px;
-            font-size: 14px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 700;
             text-decoration: none;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px var(--accent-glow);
-            transition: transform 0.2s;
+            transition: all 0.2s;
+            cursor: pointer;
         }
 
-        .media-btn:active {
-            transform: scale(0.98);
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            border: none;
         }
 
-        /* Details List */
-        details {
+        .btn-secondary {
             background: var(--card-bg);
+            color: var(--text-main);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            margin-bottom: 12px;
+        }
+
+        .btn-primary:active, .btn-secondary:active {
+            transform: scale(0.97);
+        }
+
+        /* Blog / Bilgi Kartları (Details Tasarımı) */
+        details {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 14px;
             overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         details[open] {
-            border-color: rgba(255, 42, 42, 0.4);
+            border-color: rgba(229, 9, 20, 0.5);
+            box-shadow: 0 12px 25px var(--accent-glow);
         }
 
         summary {
-            padding: 16px;
+            padding: 18px 20px;
             font-size: 15px;
             font-weight: 700;
+            color: var(--text-main);
             cursor: pointer;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: var(--card-bg);
+            transition: background 0.2s;
         }
 
-        summary::-webkit-details-marker { display: none; }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:hover {
+            background-color: var(--card-hover);
+        }
 
         summary::after {
             content: "";
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-right: 2px solid var(--accent);
             border-bottom: 2px solid var(--accent);
             transform: rotate(45deg);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            margin-right: 4px;
         }
 
         details[open] summary::after {
             transform: rotate(-135deg);
         }
 
-        .content {
-            padding: 8px 16px 16px 16px;
-            background: rgba(0,0,0,0.2);
+        .blog-content {
+            padding: 16px 20px 20px 20px;
             border-top: 1px solid var(--border);
-        }
-
-        .item {
-            display: flex;
-            align-items: center;
-            margin-top: 8px;
-            padding: 10px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-        }
-
-        input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #4a5162;
-            border-radius: 6px;
-            margin-right: 12px;
-            cursor: pointer;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        input[type="checkbox"]:checked {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-
-        input[type="checkbox"]:checked::after {
-            content: "✓";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 900;
-        }
-
-        label {
+            background: rgba(3, 7, 18, 0.4);
             font-size: 13px;
-            color: #d1d5db;
-            width: 100%;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
-        input[type="checkbox"]:checked + label {
-            text-decoration: line-through;
-            color: #4a5162;
+        .blog-content p {
+            margin-bottom: 10px;
         }
 
+        .blog-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 11px;
-            color: var(--text-muted);
+            color: #4b5563;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <div class="brand-header">
-        <div class="badge">Dekor Es Medya OS</div>
-        <h1 class="car-title">Renault Broadway</h1>
-        <div class="car-sub">1992 Classic Build Project</div>
+    <!-- Üst Marka Alanı -->
+    <div class="hero">
+        <div class="logo-badge">Resmi Portfolyo & Vitrin</div>
+        <h1>Dekor Es Medya</h1>
+        <p>Sınırları Zorlayan Sinematik Araç Videoları & Profesyonel Prodüksiyon Çözümleri</p>
     </div>
 
-    <!-- Live Spec Grid -->
-    <div class="spec-grid">
-        <div class="spec-card">
-            <div class="spec-val">1.4L</div>
-            <div class="spec-lbl">Motor</div>
-        </div>
-        <div class="spec-card">
-            <div class="spec-val">72 HP</div>
-            <div class="spec-lbl">Güç</div>
-        </div>
-        <div class="spec-card">
-            <div class="spec-val">OEM+</div>
-            <div class="spec-lbl">Stil</div>
-        </div>
+    <!-- Hızlı Aksiyon Butonları -->
+    <div class="action-row">
+        <a href="https://instagram.com" target="_blank" class="btn-primary">
+            📸 Instagram'da Gör
+        </a>
+        <a href="mailto:iletisim@dekoresmedya.com" class="btn-secondary">
+            ✉️ Teklif Al / İletişim
+        </a>
     </div>
 
-    <!-- Live Progress Bar -->
-    <div class="build-card">
-        <div class="build-info">
-            <span>Restorasyon Seviyesi</span>
-            <span id="progress-text">%0 Tamamlandı</span>
-        </div>
-        <div class="bar-bg">
-            <div class="bar-fill" id="progress-fill"></div>
-        </div>
-    </div>
-
-    <!-- Direct Video/Instagram Link -->
-    <a href="https://instagram.com" target="_blank" class="media-btn">
-        🎬 Sinematik Video Çekimini İzle
-    </a>
-
-    <!-- Mod & Restorasyon Listesi -->
-    <details>
-        <summary>🔧 Motor & Mekanik Bakım</summary>
-        <div class="content">
-            <div class="item"><input type="checkbox" id="m1" class="garage-cb"><label for="m1">Karbüratör Temizliği ve Ayarı</label></div>
-            <div class="item"><input type="checkbox" id="m2" class="garage-cb"><label for="m2">Ateşleme Sistemi (Buji & Kablolar)</label></div>
-            <div class="item"><input type="checkbox" id="m3" class="garage-cb"><label for="m3">Yağ, Hava ve Yakıt Filtre Değişimi</label></div>
-            <div class="item"><input type="checkbox" id="m4" class="garage-cb"><label for="m4">Fren Disk ve Balata Yenileme</label></div>
+    <!-- 1. BÖLÜM: HAKKIMIZDA -->
+    <details open>
+        <summary>🎯 Biz Kimiz & Vizyonumuz</summary>
+        <div class="blog-content">
+            <p><span class="highlight-text">Dekor Es Medya</span>, otomotiv tutkusunu ve estetiği en üst düzey sinematik görsel dil ile buluşturan profesyonel bir prodüksiyon ekibidir.</p>
+            <p>Standart video çekim kalıplarını unutturarak; her araca, her projeye özel bir ruh, özel bir renk paleti ve hikaye kazandırıyoruz.</p>
         </div>
     </details>
 
+    <!-- 2. BÖLÜM: HİZMETLERİMİZ -->
     <details>
-        <summary>🛞 Jant, Lastik & Süspansiyon</summary>
-        <div class="content">
-            <div class="item"><input type="checkbox" id="j1" class="garage-cb"><label for="j1">Nostaljik Jant Restorasyonu & Göbekler</label></div>
-            <div class="item"><input type="checkbox" id="j2" class="garage-cb"><label for="j2">Sıfır Yanak Lastik Takımı</label></div>
-            <div class="item"><input type="checkbox" id="j3" class="garage-cb"><label for="j3">Özel Basık Coilover / Yay Ayarı</label></div>
+        <summary>🎬 Neler Yapıyoruz? (Hizmetlerimiz)</summary>
+        <div class="blog-content">
+            <p><span class="highlight-text">Otomotiv Sinematik Çekimler:</span> Araçların hatlarını, gücünü ve karakterini en agresif ve lüks açılarla ölümsüzleştiriyoruz.</p>
+            <p><span class="highlight-text">Garaj & Proje Tanıtımları:</span> Modifiye ve restorasyon süreçlerini bir belgesel kalitesinde ekrana taşıyoruz.</p>
+            <p><span class="highlight-text">Özel Klip & Reklam Prodüksiyonu:</span> Markalar ve bireysel projeler için yüksek kaliteli video içerik üretimi.</p>
         </div>
     </details>
 
+    <!-- 3. BÖLÜM: ÇEKİM EKİPMANLARI & TEKNOLOJİ -->
     <details>
-        <summary>✨ Kaporta, Detailing & Işıklandırma</summary>
-        <div class="content">
-            <div class="item"><input type="checkbox" id="k1" class="garage-cb"><label for="k1">Pasta Cila & Seramik Kaplama</label></div>
-            <div class="item"><input type="checkbox" id="k2" class="garage-cb"><label for="k2">Sarı Nostaljik Sis Farları</label></div>
-            <div class="item"><input type="checkbox" id="k3" class="garage-cb"><label for="k3">Orijinal Krom Detay Yenilemesi</label></div>
+        <summary>⚙️ Standartların Üstünde Ekipman Parkuru</summary>
+        <div class="blog-content">
+            <p>En kusursuz görüntüyü yakalamak için son teknoloji sinematik kameralar, yüksek hızlı lensler, profesyonel gimbal ve hareket sistemleri kullanıyoruz.</p>
+            <p>Amacımız sadece bir video çekmek değil; izleyen herkesi ilk saniyeden itibaren ekran başına kilitleyen bir görsel şölen yaratmak.</p>
         </div>
     </details>
 
+    <!-- 4. BÖLÜM: İLETİŞİM & ÇALIŞMA PRENSİBİ -->
     <details>
-        <summary>🎙️ İç Kabin & Medya Akustiği</summary>
-        <div class="content">
-            <div class="item"><input type="checkbox" id="i1" class="garage-cb"><label for="i1">Nostaljik Kasetçalar & Tesisat</label></div>
-            <div class="item"><input type="checkbox" id="i2" class="garage-cb"><label for="i2">Detaylı İç Döşeme Temizliği</label></div>
+        <summary>🤝 Projenizi Hayata Geçirelim</summary>
+        <div class="blog-content">
+            <p>Aracın için profesyonel bir sinematik video veya markan için özel bir prodüksiyon mu istiyorsun?</p>
+            <p>Bize Instagram üzerinden DM atarak ulaşabilir, detayları konuşup randevulaşabilirsin.</p>
         </div>
     </details>
 
     <div class="footer">
-        DEKOR ES MEDYA &bull; AUTOMOTIVE OS v1.0
+        &copy; 2026 Dekor Es Medya &bull; Tüm Hakları Saklıdır.
     </div>
 
-    <script>
-        const cbs = document.querySelectorAll('.garage-cb');
-        const fill = document.getElementById('progress-fill');
-        const txt = document.getElementById('progress-text');
-
-        cbs.forEach(cb => {
-            const saved = localStorage.getItem('garage_' + cb.id);
-            if (saved === 'true') cb.checked = true;
-
-            cb.addEventListener('change', () => {
-                localStorage.setItem('garage_' + cb.id, cb.checked);
-                update();
-            });
-        });
-
-        function update() {
-            const total = cbs.length;
-            let count = 0;
-            cbs.forEach(cb => { if (cb.checked) count++; });
-            const pct = Math.round((count / total) * 100);
-            fill.style.width = pct + '%';
-            txt.innerText = `%${pct} Tamamlandı (${count}/${total})`;
-        }
-
-        update();
-    </script>
 </body>
 </html>
