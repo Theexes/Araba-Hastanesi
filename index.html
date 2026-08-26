@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Pro Arşiv | Dijital Sinema & Dizi Merkezi</title>
+    <style>
+        :root {
+            --bg-color: #090d16;
+            --card-bg: #131b2e;
+            --card-hover: #1a243f;
+            --accent: #e50914;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 24px 16px;
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* Üst Header Alanı */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 10px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* Pro Klasör (Details) Tasarımı */
+        details {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        details[open] {
+            border-color: rgba(229, 9, 20, 0.4);
+            box-shadow: 0 15px 30px -5px rgba(229, 9, 20, 0.1);
+        }
+
+        summary {
+            padding: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            transition: background 0.2s;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:hover {
+            background-color: var(--card-hover);
+        }
+
+        /* Özel Şık Ok Simgesi */
+        summary::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--accent);
+            border-bottom: 2px solid var(--accent);
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            margin-right: 4px;
+        }
+
+        details[open] summary::after {
+            transform: rotate(-135deg);
+        }
+
+        /* İçerik Kutusu */
+        .content {
+            padding: 8px 20px 20px 20px;
+            border-top: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        /* Liste Öğeleri */
+        .item {
+            display: flex;
+            align-items: center;
+            margin-top: 14px;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Modern Checkbox Tasarımı */
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #475569;
+            border-radius: 6px;
+            margin-right: 14px;
+            cursor: pointer;
+            position: relative;
+            background: transparent;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Tik İşareti Efekti */
+        input[type="checkbox"]:checked::after {
+            content: "✓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        label {
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            color: #cbd5e1;
+            width: 100%;
+            transition: color 0.2s;
+        }
+
+        /* Tik Atıldığında Yazının Soluklaşması */
+        input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            color: #475569;
+        }
+
+        /* Alt Bilgi */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #475569;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🎬 PRO ARŞİV</h1>
+        <p>Kişisel Sinema & Dizi Takip Paneli</p>
+    </div>
+
+    <!-- 1. KLASÖR: KURTLAR VADİSİ -->
+    <details>
+        <summary>🐺 Kurtlar Vadisi Evreni</summary>
+        <div class="content">
+            <div class="item"><input type="checkbox" id="kv1"><label for="kv1">Kurtlar Vadisi (1-97. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv2"><label for="kv2">Kurtlar Vadisi: Irak (Film)</label></div>
+            <div class="item"><input type="checkbox" id="kv3"><label for="kv3">Kurtlar Vadisi Terör (1-2. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv4"><label for="kv4">Kurtlar Vadisi Pusu (1-49. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv5"><label for="kv5">Muro: Nalet Olsun İçimdeki İnsan Sevgisine</label></div>
+            <div class="item"><input type="checkbox" id="kv6"><label for="kv6">Kurtlar Vadisi Pusu (50-71. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv7"><label for="kv7">Kurtlar Vadisi: Gladio (Film)</label></div>
+            <div class="item"><input type="checkbox" id="kv8"><label for="kv8">Kurtlar Vadisi Pusu (72-110. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv9"><label for="kv9">Kurtlar Vadisi: Filistin (Film)</label></div>
+            <div class="item"><input type="checkbox" id="kv10"><label for="kv10">Kurtlar Vadisi Pusu (111-300. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv11"><label for="kv11">Kurtlar Vadisi: Vatan (Film)</label></div>
+        </div>
+    </details>
+
+    <!-- 2. KLASÖR: SON YAZ (TÜRK DİZİSİ) -->
+    <details>
+        <summary>🌊 Son Yaz (Türk Dizisi)</summary>
+        <div class="content">
+            <div class="item"><input type="checkbox" id="sy1"><label for="sy1">1. Sezon 1. Bölüm (Pilot)</label></div>
+            <div class="item"><input type="checkbox" id="sy2"><label for="sy2">1. Sezon 2. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy3"><label for="sy3">1. Sezon 3. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy4"><label for="sy4">1. Sezon 4. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy5"><label for="sy5">1. Sezon 5. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy6"><label for="sy6">1. Sezon 6. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy7"><label for="sy7">1. Sezon 7. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy8"><label for="sy8">1. Sezon 8. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy9"><label for="sy9">1. Sezon 9. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy10"><label for="sy10">1. Sezon 10. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy11"><label for="sy11">1. Sezon 11-21. Bölümler (Sezon Finali)</label></div>
+            <div class="item"><input type="checkbox" id="sy12"><label for="sy12">2. Sezon 22-26. Bölümler (Final)</label></div>
+        </div>
+    </details>
+
+    <!-- 3. KLASÖR: EFSANE YABANCI DİZİLER -->
+    <details>
+        <summary>🔥 Efsane Yabancı Diziler</summary>
+        <div class="content">
+            <div class="item"><input type="checkbox" id="yd1"><label for="yd1">Breaking Bad (Tüm Sezonlar)</label></div>
+            <div class="item"><input type="checkbox" id="yd2"><label for="yd2">Prison Break (1. Sezon)</label></div>
+            <div class="item"><input type="checkbox" id="yd3"><label for="yd3">Peaky Blinders (Tüm Sezonlar)</label></div>
+            <div class="item"><input type="checkbox" id="yd4"><label for="yd4">Game of Thrones (Tüm Sezonlar)</label></div>
+        </div>
+    </details>
+
+    <!-- 4. KLASÖR: FAVORİ SİNEMA FİLMLERİ -->
+    <details>
+        <summary>🎞️ Favori Sinema Filmleri</summary>
+        <div class="content">
+            <div class="item"><input type="checkbox" id="ff1"><label for="ff1">Interstellar (Yıldızlararası)</label></div>
+            <div class="item"><input type="checkbox" id="ff2"><label for="ff2">Inception (Başlangıç)</label></div>
+            <div class="item"><input type="checkbox" id="ff3"><label for="ff3">The Godfather (Baba)</label></div>
+            <div class="item"><input type="checkbox" id="ff4"><label for="ff4">Fight Club (Dövüş Kulübü)</label></div>
+            <div class="item"><input type="checkbox" id="ff5"><label for="ff5">Gladiator (Gladyatör)</label></div>
+        </div>
+    </details>
+
+    <div class="footer">
+        Özel Tasarım &bull; Saf Kod Mimarisi
+    </div>
+
+</body>
+</html>
