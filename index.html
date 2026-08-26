@@ -33,11 +33,11 @@
             min-height: 100vh;
         }
 
-        /* Üst Header ve Logo Alanı */
+        /* Header & Logo */
         .header {
             text-align: center;
-            margin-bottom: 25px;
-            padding-top: 15px;
+            margin-bottom: 20px;
+            padding-top: 10px;
         }
 
         .logo-badge {
@@ -61,13 +61,68 @@
             color: #ffffff;
         }
 
-        .header p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-top: 4px;
+        /* İstatistik & Progress Bar Kartı */
+        .stats-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        /* Pro Klasör (Details) Tasarımı */
+        .stats-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .stats-info span:last-child {
+            color: var(--accent);
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #ff4d4d);
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 4px;
+        }
+
+        /* Arama Kutusu */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* Klasör (Details) Tasarımı */
         details {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -105,7 +160,6 @@
             background-color: var(--card-hover);
         }
 
-        /* Özel Şık Ok Simgesi */
         summary::after {
             content: "";
             width: 7px;
@@ -121,7 +175,6 @@
             transform: rotate(-135deg);
         }
 
-        /* İçerik Kutusu */
         .content {
             padding: 6px 16px 16px 16px;
             border-top: 1px solid var(--border);
@@ -144,7 +197,7 @@
             background: rgba(255, 255, 255, 0.04);
         }
 
-        /* Modern Checkbox Tasarımı */
+        /* Checkbox */
         input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
@@ -166,7 +219,6 @@
             box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Tik İşareti Efekti */
         input[type="checkbox"]:checked::after {
             content: "✓";
             position: absolute;
@@ -188,13 +240,11 @@
             line-height: 1.4;
         }
 
-        /* Tik Atıldığında Yazının Soluklaşması */
         input[type="checkbox"]:checked + label {
             text-decoration: line-through;
             color: #4b5563;
         }
 
-        /* Alt Bilgi */
         .footer {
             text-align: center;
             margin-top: 35px;
@@ -207,74 +257,163 @@
 <body>
 
     <div class="header">
-        <div class="logo-badge">Özel Koleksiyon</div>
+        <div class="logo-badge">Pro Sürüm v3.0</div>
         <h1>DİJİTAL ARŞİV</h1>
-        <p>Film & Dizi Takip Merkezi</p>
+    </div>
+
+    <!-- İlerleme ve İstatistik Kartı -->
+    <div class="stats-card">
+        <div class="stats-info">
+            <span>İzleme İlerlemesi</span>
+            <span id="progress-text">%0 Tamamlandı</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Arama Çubuğu -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Arşivde dizi veya film ara...">
     </div>
 
     <!-- 1. KLASÖR: KURTLAR VADİSİ -->
-    <details>
+    <details class="archive-category">
         <summary>🐺 Kurtlar Vadisi Evreni</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="kv1"><label for="kv1">Kurtlar Vadisi (1-97. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv2"><label for="kv2">Kurtlar Vadisi: Irak (Film)</label></div>
-            <div class="item"><input type="checkbox" id="kv3"><label for="kv3">Kurtlar Vadisi Terör (1-2. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv4"><label for="kv4">Kurtlar Vadisi Pusu (1-49. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv5"><label for="kv5">Muro: Nalet Olsun İçimdeki İnsan Sevgisine</label></div>
-            <div class="item"><input type="checkbox" id="kv6"><label for="kv6">Kurtlar Vadisi Pusu (50-71. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv7"><label for="kv7">Kurtlar Vadisi: Gladio (Film)</label></div>
-            <div class="item"><input type="checkbox" id="kv8"><label for="kv8">Kurtlar Vadisi Pusu (72-110. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv9"><label for="kv9">Kurtlar Vadisi: Filistin (Film)</label></div>
-            <div class="item"><input type="checkbox" id="kv10"><label for="kv10">Kurtlar Vadisi Pusu (111-300. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv11"><label for="kv11">Kurtlar Vadisi: Vatan (Film)</label></div>
+            <div class="item"><input type="checkbox" id="kv1" class="app-checkbox"><label for="kv1">Kurtlar Vadisi (1-97. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv2" class="app-checkbox"><label for="kv2">Kurtlar Vadisi: Irak (Film)</label></div>
+            <div class="item"><input type="checkbox" id="kv3" class="app-checkbox"><label for="kv3">Kurtlar Vadisi Terör (1-2. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv4" class="app-checkbox"><label for="kv4">Kurtlar Vadisi Pusu (1-49. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv5" class="app-checkbox"><label for="kv5">Muro: Nalet Olsun İçimdeki İnsan Sevgisine</label></div>
+            <div class="item"><input type="checkbox" id="kv6" class="app-checkbox"><label for="kv6">Kurtlar Vadisi Pusu (50-71. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv7" class="app-checkbox"><label for="kv7">Kurtlar Vadisi: Gladio (Film)</label></div>
+            <div class="item"><input type="checkbox" id="kv8" class="app-checkbox"><label for="kv8">Kurtlar Vadisi Pusu (72-110. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv9" class="app-checkbox"><label for="kv9">Kurtlar Vadisi: Filistin (Film)</label></div>
+            <div class="item"><input type="checkbox" id="kv10" class="app-checkbox"><label for="kv10">Kurtlar Vadisi Pusu (111-300. Bölüm)</label></div>
+            <div class="item"><input type="checkbox" id="kv11" class="app-checkbox"><label for="kv11">Kurtlar Vadisi: Vatan (Film)</label></div>
         </div>
     </details>
 
     <!-- 2. KLASÖR: SON YAZ (TÜRK DİZİSİ) -->
-    <details>
+    <details class="archive-category">
         <summary>🌊 Son Yaz (Türk Dizisi)</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="sy1"><label for="sy1">1. Sezon 1. Bölüm (Pilot)</label></div>
-            <div class="item"><input type="checkbox" id="sy2"><label for="sy2">1. Sezon 2. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy3"><label for="sy3">1. Sezon 3. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy4"><label for="sy4">1. Sezon 4. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy5"><label for="sy5">1. Sezon 5. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy6"><label for="sy6">1. Sezon 6. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy7"><label for="sy7">1. Sezon 7. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy8"><label for="sy8">1. Sezon 8. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy9"><label for="sy9">1. Sezon 9. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy10"><label for="sy10">1. Sezon 10. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy11"><label for="sy11">1. Sezon 11-21. Bölümler (Sezon Finali)</label></div>
-            <div class="item"><input type="checkbox" id="sy12"><label for="sy12">2. Sezon 22-26. Bölümler (Final)</label></div>
+            <div class="item"><input type="checkbox" id="sy1" class="app-checkbox"><label for="sy1">1. Sezon 1. Bölüm (Pilot)</label></div>
+            <div class="item"><input type="checkbox" id="sy2" class="app-checkbox"><label for="sy2">1. Sezon 2. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy3" class="app-checkbox"><label for="sy3">1. Sezon 3. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy4" class="app-checkbox"><label for="sy4">1. Sezon 4. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy5" class="app-checkbox"><label for="sy5">1. Sezon 5. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy6" class="app-checkbox"><label for="sy6">1. Sezon 6. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy7" class="app-checkbox"><label for="sy7">1. Sezon 7. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy8" class="app-checkbox"><label for="sy8">1. Sezon 8. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy9" class="app-checkbox"><label for="sy9">1. Sezon 9. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy10" class="app-checkbox"><label for="sy10">1. Sezon 10. Bölüm</label></div>
+            <div class="item"><input type="checkbox" id="sy11" class="app-checkbox"><label for="sy11">1. Sezon 11-21. Bölümler (Sezon Finali)</label></div>
+            <div class="item"><input type="checkbox" id="sy12" class="app-checkbox"><label for="sy12">2. Sezon 22-26. Bölümler (Final)</label></div>
         </div>
     </details>
 
     <!-- 3. KLASÖR: EFSANE YABANCI DİZİLER -->
-    <details>
+    <details class="archive-category">
         <summary>🔥 Efsane Yabancı Diziler</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="yd1"><label for="yd1">Breaking Bad (Tüm Sezonlar)</label></div>
-            <div class="item"><input type="checkbox" id="yd2"><label for="yd2">Prison Break (1. Sezon)</label></div>
-            <div class="item"><input type="checkbox" id="yd3"><label for="yd3">Peaky Blinders (Tüm Sezonlar)</label></div>
-            <div class="item"><input type="checkbox" id="yd4"><label for="yd4">Game of Thrones (Tüm Sezonlar)</label></div>
+            <div class="item"><input type="checkbox" id="yd1" class="app-checkbox"><label for="yd1">Breaking Bad (Tüm Sezonlar)</label></div>
+            <div class="item"><input type="checkbox" id="yd2" class="app-checkbox"><label for="yd2">Prison Break (1. Sezon)</label></div>
+            <div class="item"><input type="checkbox" id="yd3" class="app-checkbox"><label for="yd3">Peaky Blinders (Tüm Sezonlar)</label></div>
+            <div class="item"><input type="checkbox" id="yd4" class="app-checkbox"><label for="yd4">Game of Thrones (Tüm Sezonlar)</label></div>
         </div>
     </details>
 
     <!-- 4. KLASÖR: FAVORİ SİNEMA FİLMLERİ -->
-    <details>
+    <details class="archive-category">
         <summary>🎞️ Favori Sinema Filmleri</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="ff1"><label for="ff1">Interstellar (Yıldızlararası)</label></div>
-            <div class="item"><input type="checkbox" id="ff2"><label for="ff2">Inception (Başlangıç)</label></div>
-            <div class="item"><input type="checkbox" id="ff3"><label for="ff3">The Godfather (Baba)</label></div>
-            <div class="item"><input type="checkbox" id="ff4"><label for="ff4">Fight Club (Dövüş Kulübü)</label></div>
-            <div class="item"><input type="checkbox" id="ff5"><label for="ff5">Gladiator (Gladyatör)</label></div>
+            <div class="item"><input type="checkbox" id="ff1" class="app-checkbox"><label for="ff1">Interstellar (Yıldızlararası)</label></div>
+            <div class="item"><input type="checkbox" id="ff2" class="app-checkbox"><label for="ff2">Inception (Başlangıç)</label></div>
+            <div class="item"><input type="checkbox" id="ff3" class="app-checkbox"><label for="ff3">The Godfather (Baba)</label></div>
+            <div class="item"><input type="checkbox" id="ff4" class="app-checkbox"><label for="ff4">Fight Club (Dövüş Kulübü)</label></div>
+            <div class="item"><input type="checkbox" id="ff5" class="app-checkbox"><label for="ff5">Gladiator (Gladyatör)</label></div>
         </div>
     </details>
 
     <div class="footer">
-        Mobil Web Uygulaması &bull; v2.0
+        İnteraktif Web Uygulaması &bull; v3.0
     </div>
 
+    <!-- JavaScript: Hafıza, İlerleme ve Arama Sistemi -->
+    <script>
+        const checkboxes = document.querySelectorAll('.app-checkbox');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const searchInput = document.getElementById('searchInput');
+        const items = document.querySelectorAll('.item');
+        const categories = document.querySelectorAll('.archive-category');
+
+        // 1. Sayfa açıldığında hafızadan (localStorage) tikleri yükle
+        checkboxes.forEach(checkbox => {
+            const savedState = localStorage.getItem(checkbox.id);
+            if (savedState === 'true') {
+                checkbox.checked = true;
+            }
+
+            // Tik değiştikçe hafızaya kaydet ve ilerleme çubuğunu güncelle
+            checkbox.addEventListener('change', () => {
+                localStorage.setItem(checkbox.id, checkbox.checked);
+                updateProgress();
+            });
+        });
+
+        // 2. İlerleme yüzdesini hesapla ve göster
+        function updateProgress() {
+            const total = checkboxes.length;
+            let checkedCount = 0;
+            checkboxes.forEach(cb => {
+                if (cb.checked) checkedCount++;
+            });
+            const percentage = Math.round((checkedCount / total) * 100);
+            progressFill.style.width = percentage + '%';
+            progressText.innerText = `%${percentage} Tamamlandı (${checkedCount}/${total})`;
+        }
+
+        // Başlangıçta ilerlemeyi hesapla
+        updateProgress();
+
+        // 3. Canlı Arama / Filtreleme Sistemi
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+
+            if (term === '') {
+                items.forEach(item => item.style.display = 'flex');
+                categories.forEach(cat => {
+                    cat.style.display = 'block';
+                    cat.open = false; // Aramadan çıkınca klasörleri kapat
+                });
+                return;
+            }
+
+            categories.forEach(cat => {
+                let matchFoundInCat = false;
+                const catItems = cat.querySelectorAll('.item');
+
+                catItems.forEach(item => {
+                    const text = item.querySelector('label').textContent.toLowerCase();
+                    if (text.includes(term)) {
+                        item.style.display = 'flex';
+                        matchFoundInCat = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (matchFoundInCat) {
+                    cat.style.display = 'block';
+                    cat.open = true; // Eşleşme varsa klasörü otomatik aç
+                } else {
+                    cat.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
