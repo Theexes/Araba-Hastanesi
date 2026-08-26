@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Pro Arşiv | Dijital Sinema & Dizi Merkezi</title>
+    <title>Dekor Es Medya | Digital Garage OS</title>
     <style>
         :root {
-            --bg-color: #07090e;
-            --card-bg: #111827;
-            --card-hover: #1f2937;
-            --accent: #e50914;
-            --accent-glow: rgba(229, 9, 20, 0.25);
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-            --border: #1f2937;
+            --bg-color: #0b0d12;
+            --card-bg: #131722;
+            --card-hover: #1c2234;
+            --accent: #ff2a2a;
+            --accent-glow: rgba(255, 42, 42, 0.3);
+            --text-main: #ffffff;
+            --text-muted: #8e95a5;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -24,7 +24,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             padding: 20px 16px 40px 16px;
@@ -33,142 +33,167 @@
             min-height: 100vh;
         }
 
-        /* Header & Logo */
-        .header {
+        /* Top Bar & Brand */
+        .brand-header {
             text-align: center;
             margin-bottom: 20px;
-            padding-top: 10px;
         }
 
-        .logo-badge {
+        .badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent), #ff4d4d);
-            color: white;
+            background: linear-gradient(135deg, var(--accent), #b30000);
+            color: #fff;
+            font-size: 10px;
             font-weight: 900;
-            font-size: 11px;
             letter-spacing: 2px;
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 20px;
-            margin-bottom: 8px;
             text-transform: uppercase;
-            box-shadow: 0 4px 12px var(--accent-glow);
+            box-shadow: 0 4px 15px var(--accent-glow);
+            margin-bottom: 8px;
         }
 
-        .header h1 {
-            font-size: 24px;
+        .car-title {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #8e95a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .car-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Spec Grid (Teknik Özellik Kartları) */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .spec-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .spec-val {
+            font-size: 16px;
             font-weight: 800;
-            letter-spacing: 1px;
-            color: #ffffff;
+            color: var(--accent);
         }
 
-        /* İstatistik & Progress Bar Kartı */
-        .stats-card {
-            background-color: var(--card-bg);
+        .spec-lbl {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Build Progress (Restorasyon Barı) */
+        .build-card {
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 16px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
 
-        .stats-info {
+        .build-info {
             display: flex;
             justify-content: space-between;
             font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .stats-info span:last-child {
+        .build-info span:last-child {
             color: var(--accent);
         }
 
-        .progress-bar-bg {
+        .bar-bg {
             width: 100%;
             height: 8px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             border-radius: 4px;
             overflow: hidden;
         }
 
-        .progress-bar-fill {
+        .bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent), #ff4d4d);
+            background: linear-gradient(90deg, var(--accent), #ff6b6b);
             width: 0%;
             transition: width 0.4s ease;
-            border-radius: 4px;
         }
 
-        /* Arama Kutusu */
-        .search-container {
-            margin-bottom: 20px;
-        }
-
-        .search-input {
+        /* Media & Showreel Section */
+        .media-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
-            padding: 14px 16px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text-main);
+            background: linear-gradient(135deg, #1f2430, #131722);
+            border: 1px solid var(--accent);
+            color: #fff;
+            padding: 16px;
+            border-radius: 14px;
             font-size: 14px;
-            outline: none;
-            transition: all 0.3s;
+            font-weight: 800;
+            text-decoration: none;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transition: transform 0.2s;
         }
 
-        .search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
+        .media-btn:active {
+            transform: scale(0.98);
         }
 
-        /* Klasör (Details) Tasarımı */
+        /* Details List */
         details {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 14px;
+            border-radius: 14px;
+            margin-bottom: 12px;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         details[open] {
-            border-color: rgba(229, 9, 20, 0.5);
-            box-shadow: 0 12px 25px var(--accent-glow);
+            border-color: rgba(255, 42, 42, 0.4);
         }
 
         summary {
-            padding: 18px 20px;
-            font-size: 16px;
+            padding: 16px;
+            font-size: 15px;
             font-weight: 700;
-            color: var(--text-main);
             cursor: pointer;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: var(--card-bg);
-            transition: background 0.2s;
         }
 
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        summary:hover {
-            background-color: var(--card-hover);
-        }
+        summary::-webkit-details-marker { display: none; }
 
         summary::after {
             content: "";
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             border-right: 2px solid var(--accent);
             border-bottom: 2px solid var(--accent);
             transform: rotate(45deg);
-            transition: transform 0.3s ease;
-            margin-right: 4px;
+            transition: transform 0.3s;
         }
 
         details[open] summary::after {
@@ -176,47 +201,36 @@
         }
 
         .content {
-            padding: 6px 16px 16px 16px;
+            padding: 8px 16px 16px 16px;
+            background: rgba(0,0,0,0.2);
             border-top: 1px solid var(--border);
-            background: rgba(3, 7, 18, 0.5);
         }
 
-        /* Liste Öğeleri */
         .item {
             display: flex;
             align-items: center;
-            margin-top: 10px;
-            padding: 12px 14px;
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            transition: all 0.2s;
+            margin-top: 8px;
+            padding: 10px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
         }
 
-        .item:hover {
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        /* Checkbox */
         input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
-            border: 2px solid #4b5563;
-            border-radius: 7px;
-            margin-right: 14px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a5162;
+            border-radius: 6px;
+            margin-right: 12px;
             cursor: pointer;
             position: relative;
-            background: transparent;
-            transition: all 0.2s ease;
             flex-shrink: 0;
         }
 
         input[type="checkbox"]:checked {
-            background-color: var(--accent);
+            background: var(--accent);
             border-color: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         input[type="checkbox"]:checked::after {
@@ -225,195 +239,137 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
-            font-size: 13px;
+            color: #fff;
+            font-size: 12px;
             font-weight: 900;
         }
 
         label {
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
             color: #d1d5db;
             width: 100%;
-            transition: color 0.2s;
-            line-height: 1.4;
         }
 
         input[type="checkbox"]:checked + label {
             text-decoration: line-through;
-            color: #4b5563;
+            color: #4a5162;
         }
 
         .footer {
             text-align: center;
-            margin-top: 35px;
-            font-size: 12px;
-            color: #4b5563;
-            letter-spacing: 0.5px;
+            margin-top: 30px;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="logo-badge">Pro Sürüm v3.0</div>
-        <h1>DİJİTAL ARŞİV</h1>
+    <div class="brand-header">
+        <div class="badge">Dekor Es Medya OS</div>
+        <h1 class="car-title">Renault Broadway</h1>
+        <div class="car-sub">1992 Classic Build Project</div>
     </div>
 
-    <!-- İlerleme ve İstatistik Kartı -->
-    <div class="stats-card">
-        <div class="stats-info">
-            <span>İzleme İlerlemesi</span>
+    <!-- Live Spec Grid -->
+    <div class="spec-grid">
+        <div class="spec-card">
+            <div class="spec-val">1.4L</div>
+            <div class="spec-lbl">Motor</div>
+        </div>
+        <div class="spec-card">
+            <div class="spec-val">72 HP</div>
+            <div class="spec-lbl">Güç</div>
+        </div>
+        <div class="spec-card">
+            <div class="spec-val">OEM+</div>
+            <div class="spec-lbl">Stil</div>
+        </div>
+    </div>
+
+    <!-- Live Progress Bar -->
+    <div class="build-card">
+        <div class="build-info">
+            <span>Restorasyon Seviyesi</span>
             <span id="progress-text">%0 Tamamlandı</span>
         </div>
-        <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="progress-fill"></div>
+        <div class="bar-bg">
+            <div class="bar-fill" id="progress-fill"></div>
         </div>
     </div>
 
-    <!-- Arama Çubuğu -->
-    <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Arşivde dizi veya film ara...">
-    </div>
+    <!-- Direct Video/Instagram Link -->
+    <a href="https://instagram.com" target="_blank" class="media-btn">
+        🎬 Sinematik Video Çekimini İzle
+    </a>
 
-    <!-- 1. KLASÖR: KURTLAR VADİSİ -->
-    <details class="archive-category">
-        <summary>🐺 Kurtlar Vadisi Evreni</summary>
+    <!-- Mod & Restorasyon Listesi -->
+    <details>
+        <summary>🔧 Motor & Mekanik Bakım</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="kv1" class="app-checkbox"><label for="kv1">Kurtlar Vadisi (1-97. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv2" class="app-checkbox"><label for="kv2">Kurtlar Vadisi: Irak (Film)</label></div>
-            <div class="item"><input type="checkbox" id="kv3" class="app-checkbox"><label for="kv3">Kurtlar Vadisi Terör (1-2. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv4" class="app-checkbox"><label for="kv4">Kurtlar Vadisi Pusu (1-49. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv5" class="app-checkbox"><label for="kv5">Muro: Nalet Olsun İçimdeki İnsan Sevgisine</label></div>
-            <div class="item"><input type="checkbox" id="kv6" class="app-checkbox"><label for="kv6">Kurtlar Vadisi Pusu (50-71. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv7" class="app-checkbox"><label for="kv7">Kurtlar Vadisi: Gladio (Film)</label></div>
-            <div class="item"><input type="checkbox" id="kv8" class="app-checkbox"><label for="kv8">Kurtlar Vadisi Pusu (72-110. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv9" class="app-checkbox"><label for="kv9">Kurtlar Vadisi: Filistin (Film)</label></div>
-            <div class="item"><input type="checkbox" id="kv10" class="app-checkbox"><label for="kv10">Kurtlar Vadisi Pusu (111-300. Bölüm)</label></div>
-            <div class="item"><input type="checkbox" id="kv11" class="app-checkbox"><label for="kv11">Kurtlar Vadisi: Vatan (Film)</label></div>
+            <div class="item"><input type="checkbox" id="m1" class="garage-cb"><label for="m1">Karbüratör Temizliği ve Ayarı</label></div>
+            <div class="item"><input type="checkbox" id="m2" class="garage-cb"><label for="m2">Ateşleme Sistemi (Buji & Kablolar)</label></div>
+            <div class="item"><input type="checkbox" id="m3" class="garage-cb"><label for="m3">Yağ, Hava ve Yakıt Filtre Değişimi</label></div>
+            <div class="item"><input type="checkbox" id="m4" class="garage-cb"><label for="m4">Fren Disk ve Balata Yenileme</label></div>
         </div>
     </details>
 
-    <!-- 2. KLASÖR: SON YAZ (TÜRK DİZİSİ) -->
-    <details class="archive-category">
-        <summary>🌊 Son Yaz (Türk Dizisi)</summary>
+    <details>
+        <summary>🛞 Jant, Lastik & Süspansiyon</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="sy1" class="app-checkbox"><label for="sy1">1. Sezon 1. Bölüm (Pilot)</label></div>
-            <div class="item"><input type="checkbox" id="sy2" class="app-checkbox"><label for="sy2">1. Sezon 2. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy3" class="app-checkbox"><label for="sy3">1. Sezon 3. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy4" class="app-checkbox"><label for="sy4">1. Sezon 4. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy5" class="app-checkbox"><label for="sy5">1. Sezon 5. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy6" class="app-checkbox"><label for="sy6">1. Sezon 6. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy7" class="app-checkbox"><label for="sy7">1. Sezon 7. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy8" class="app-checkbox"><label for="sy8">1. Sezon 8. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy9" class="app-checkbox"><label for="sy9">1. Sezon 9. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy10" class="app-checkbox"><label for="sy10">1. Sezon 10. Bölüm</label></div>
-            <div class="item"><input type="checkbox" id="sy11" class="app-checkbox"><label for="sy11">1. Sezon 11-21. Bölümler (Sezon Finali)</label></div>
-            <div class="item"><input type="checkbox" id="sy12" class="app-checkbox"><label for="sy12">2. Sezon 22-26. Bölümler (Final)</label></div>
+            <div class="item"><input type="checkbox" id="j1" class="garage-cb"><label for="j1">Nostaljik Jant Restorasyonu & Göbekler</label></div>
+            <div class="item"><input type="checkbox" id="j2" class="garage-cb"><label for="j2">Sıfır Yanak Lastik Takımı</label></div>
+            <div class="item"><input type="checkbox" id="j3" class="garage-cb"><label for="j3">Özel Basık Coilover / Yay Ayarı</label></div>
         </div>
     </details>
 
-    <!-- 3. KLASÖR: EFSANE YABANCI DİZİLER -->
-    <details class="archive-category">
-        <summary>🔥 Efsane Yabancı Diziler</summary>
+    <details>
+        <summary>✨ Kaporta, Detailing & Işıklandırma</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="yd1" class="app-checkbox"><label for="yd1">Breaking Bad (Tüm Sezonlar)</label></div>
-            <div class="item"><input type="checkbox" id="yd2" class="app-checkbox"><label for="yd2">Prison Break (1. Sezon)</label></div>
-            <div class="item"><input type="checkbox" id="yd3" class="app-checkbox"><label for="yd3">Peaky Blinders (Tüm Sezonlar)</label></div>
-            <div class="item"><input type="checkbox" id="yd4" class="app-checkbox"><label for="yd4">Game of Thrones (Tüm Sezonlar)</label></div>
+            <div class="item"><input type="checkbox" id="k1" class="garage-cb"><label for="k1">Pasta Cila & Seramik Kaplama</label></div>
+            <div class="item"><input type="checkbox" id="k2" class="garage-cb"><label for="k2">Sarı Nostaljik Sis Farları</label></div>
+            <div class="item"><input type="checkbox" id="k3" class="garage-cb"><label for="k3">Orijinal Krom Detay Yenilemesi</label></div>
         </div>
     </details>
 
-    <!-- 4. KLASÖR: FAVORİ SİNEMA FİLMLERİ -->
-    <details class="archive-category">
-        <summary>🎞️ Favori Sinema Filmleri</summary>
+    <details>
+        <summary>🎙️ İç Kabin & Medya Akustiği</summary>
         <div class="content">
-            <div class="item"><input type="checkbox" id="ff1" class="app-checkbox"><label for="ff1">Interstellar (Yıldızlararası)</label></div>
-            <div class="item"><input type="checkbox" id="ff2" class="app-checkbox"><label for="ff2">Inception (Başlangıç)</label></div>
-            <div class="item"><input type="checkbox" id="ff3" class="app-checkbox"><label for="ff3">The Godfather (Baba)</label></div>
-            <div class="item"><input type="checkbox" id="ff4" class="app-checkbox"><label for="ff4">Fight Club (Dövüş Kulübü)</label></div>
-            <div class="item"><input type="checkbox" id="ff5" class="app-checkbox"><label for="ff5">Gladiator (Gladyatör)</label></div>
+            <div class="item"><input type="checkbox" id="i1" class="garage-cb"><label for="i1">Nostaljik Kasetçalar & Tesisat</label></div>
+            <div class="item"><input type="checkbox" id="i2" class="garage-cb"><label for="i2">Detaylı İç Döşeme Temizliği</label></div>
         </div>
     </details>
 
     <div class="footer">
-        İnteraktif Web Uygulaması &bull; v3.0
+        DEKOR ES MEDYA &bull; AUTOMOTIVE OS v1.0
     </div>
 
-    <!-- JavaScript: Hafıza, İlerleme ve Arama Sistemi -->
     <script>
-        const checkboxes = document.querySelectorAll('.app-checkbox');
-        const progressFill = document.getElementById('progress-fill');
-        const progressText = document.getElementById('progress-text');
-        const searchInput = document.getElementById('searchInput');
-        const items = document.querySelectorAll('.item');
-        const categories = document.querySelectorAll('.archive-category');
+        const cbs = document.querySelectorAll('.garage-cb');
+        const fill = document.getElementById('progress-fill');
+        const txt = document.getElementById('progress-text');
 
-        // 1. Sayfa açıldığında hafızadan (localStorage) tikleri yükle
-        checkboxes.forEach(checkbox => {
-            const savedState = localStorage.getItem(checkbox.id);
-            if (savedState === 'true') {
-                checkbox.checked = true;
-            }
+        cbs.forEach(cb => {
+            const saved = localStorage.getItem('garage_' + cb.id);
+            if (saved === 'true') cb.checked = true;
 
-            // Tik değiştikçe hafızaya kaydet ve ilerleme çubuğunu güncelle
-            checkbox.addEventListener('change', () => {
-                localStorage.setItem(checkbox.id, checkbox.checked);
-                updateProgress();
+            cb.addEventListener('change', () => {
+                localStorage.setItem('garage_' + cb.id, cb.checked);
+                update();
             });
         });
 
-        // 2. İlerleme yüzdesini hesapla ve göster
-        function updateProgress() {
-            const total = checkboxes.length;
-            let checkedCount = 0;
-            checkboxes.forEach(cb => {
-                if (cb.checked) checkedCount++;
-            });
-            const percentage = Math.round((checkedCount / total) * 100);
-            progressFill.style.width = percentage + '%';
-            progressText.innerText = `%${percentage} Tamamlandı (${checkedCount}/${total})`;
+        function update() {
+            const total = cbs.length;
+            let count = 0;
+            cbs.forEach(cb => { if (cb.checked) count++; });
+            const pct = Math.round((count / total) * 100);
+            fill.style.width = pct + '%';
+            txt.innerText = `%${pct} Tamamlandı (${count}/${total})`;
         }
 
-        // Başlangıçta ilerlemeyi hesapla
-        updateProgress();
-
-        // 3. Canlı Arama / Filtreleme Sistemi
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase().trim();
-
-            if (term === '') {
-                items.forEach(item => item.style.display = 'flex');
-                categories.forEach(cat => {
-                    cat.style.display = 'block';
-                    cat.open = false; // Aramadan çıkınca klasörleri kapat
-                });
-                return;
-            }
-
-            categories.forEach(cat => {
-                let matchFoundInCat = false;
-                const catItems = cat.querySelectorAll('.item');
-
-                catItems.forEach(item => {
-                    const text = item.querySelector('label').textContent.toLowerCase();
-                    if (text.includes(term)) {
-                        item.style.display = 'flex';
-                        matchFoundInCat = true;
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-
-                if (matchFoundInCat) {
-                    cat.style.display = 'block';
-                    cat.open = true; // Eşleşme varsa klasörü otomatik aç
-                } else {
-                    cat.style.display = 'none';
-                }
-            });
-        });
+        update();
     </script>
 </body>
 </html>
