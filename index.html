@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dekor Es Medya | Pro Otomotiv Aksesuar</title>
+    <title>Dekor Es Medya | Pro Otomotiv Kozmetik & Aksesuar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,22 +22,60 @@
 
     <!-- Hero Alanı -->
     <div class="hero-shop">
-        <h1>Pro Aksesuar Vitrini</h1>
-        <p>Aracınız için en özel parçalar, doğrudan WhatsApp sipariş hattında.</p>
+        <h1>Pro Detailing & Aksesuar Vitrini</h1>
+        <p>Aracınızın estetiğini zirveye taşıyan profesyonel kozmetik ürünler ve özel aksesuarlar.</p>
     </div>
 
-    <!-- Kategori Filtreleri -->
-    <div class="category-bar">
-        <button class="cat-btn active" onclick="filterCategory('all')">Tümü</button>
-        <button class="cat-btn" onclick="filterCategory('jant')">Jant & Dış</button>
-        <button class="cat-btn" onclick="filterCategory('ic')">İç Kabin</button>
-        <button class="cat-btn" onclick="filterCategory('isik')">Işıklandırma</button>
+    <!-- Sekme Menüsü (Mağaza vs Sinematik Projeler) -->
+    <div class="main-tabs">
+        <button class="tab-pill active" onclick="switchMainTab('shop')">🛒 Ürün Mağazası</button>
+        <button class="tab-pill" onclick="switchMainTab('media')">🎬 Sinematik Projeler</button>
     </div>
 
-    <!-- Ürünler Izgarası (20 Adet) -->
-    <main class="product-grid" id="productGrid">
-        <!-- JS ile dolacak -->
-    </main>
+    <!-- MAĞAZA BÖLÜMÜ -->
+    <div id="shopSection">
+        <!-- Kategori Filtreleri -->
+        <div class="category-bar">
+            <button class="cat-btn active" onclick="filterCategory('all')">Tümü</button>
+            <button class="cat-btn" onclick="filterCategory('kozmetik')">Bakım & Kimyasal</button>
+            <button class="cat-btn" onclick="filterCategory('koku')">Özel Kokular</button>
+            <button class="cat-btn" onclick="filterCategory('aksesuar')">Estetik Aksesuar</button>
+        </div>
+
+        <!-- Ürünler Izgarası -->
+        <main class="product-grid" id="productGrid">
+            <!-- JS ile dolacak -->
+        </main>
+    </div>
+
+    <!-- SİNEMATİK PROJELER / GALERİ BÖLÜMÜ -->
+    <div id="mediaSection" style="display: none;">
+        <div class="media-banner">
+            <h3>Dekor Es Medya Prodüksiyon</h3>
+            <p>Araçlarınız için çektiğimiz sinematik tanıtım projelerinden kareler.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <div class="gallery-img">🏎️</div>
+                <div class="gallery-title">Night Runner / Broadway Project</div>
+            </div>
+            <div class="gallery-card">
+                <div class="gallery-img">🔥</div>
+                <div class="gallery-title">Aggressive Fitment Showcase</div>
+            </div>
+            <div class="gallery-card">
+                <div class="gallery-img">📸</div>
+                <div class="gallery-title">Cinematic Detailing Clip</div>
+            </div>
+            <div class="gallery-card">
+                <div class="gallery-img">🏁</div>
+                <div class="gallery-title">Car Meet Official Aftermovie</div>
+            </div>
+        </div>
+        <a href="https://instagram.com" target="_blank" class="whatsapp-btn-full" style="text-align: center; text-decoration: none; display: block; margin-top: 15px;">
+            📸 Instagram'da Tüm Videoları Gör
+        </a>
+    </div>
 
     <!-- Sabit Alt Bar / Sepet Özeti -->
     <div class="cart-bar" id="cartBar">
@@ -54,11 +92,11 @@
     <div id="detailModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" id="closeDetail">&times;</span>
-            <div class="modal-img-big">🛞</div>
+            <div class="modal-img-big" id="detailEmoji">🧴</div>
             <h2 id="detailTitle">Ürün Adı</h2>
             <p id="detailDesc" class="detail-desc">Ürün açıklaması burada yer alacak.</p>
             <div class="specs-box">
-                <span>Uyumlu Modeller: <strong id="detailCompat">Tüm Araçlar</strong></span>
+                <span>Kullanım Alanı: <strong id="detailCompat">Tüm Araç Yüzeyleri</strong></span>
             </div>
             <button id="modalActionBtn" class="submit-btn">Sepete Ekle</button>
         </div>
@@ -74,7 +112,7 @@
             </div>
             <div class="form-group" style="margin-top: 15px;">
                 <label>Özel Sipariş / Notunuz (İsteğe Bağlı)</label>
-                <textarea id="orderNote" placeholder="Örn: Broadway uyumlu olsun, siyah renk..." rows="2"></textarea>
+                <textarea id="orderNote" placeholder="Örn: Koku vanilya olsun, kargo ile gönderim..." rows="2"></textarea>
             </div>
             <button id="sendWhatsappOrderBtn" class="whatsapp-btn-full">
                 💬 WhatsApp ile Gönder (0551 144 14 95)
