@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dekor Es Medya | Otomotiv Aksesuar Mağazası</title>
+    <title>Dekor Es Medya | Pro Otomotiv Aksesuar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,29 +20,69 @@
         </div>
     </header>
 
-    <!-- Ana Vitrin Header -->
+    <!-- Hero Alanı -->
     <div class="hero-shop">
         <h1>Pro Aksesuar Vitrini</h1>
         <p>Aracınız için en özel parçalar, doğrudan WhatsApp sipariş hattında.</p>
     </div>
 
+    <!-- Kategori Filtreleri -->
+    <div class="category-bar">
+        <button class="cat-btn active" onclick="filterCategory('all')">Tümü</button>
+        <button class="cat-btn" onclick="filterCategory('jant')">Jant & Dış</button>
+        <button class="cat-btn" onclick="filterCategory('ic')">İç Kabin</button>
+        <button class="cat-btn" onclick="filterCategory('isik')">Işıklandırma</button>
+    </div>
+
     <!-- Ürünler Izgarası (20 Adet) -->
     <main class="product-grid" id="productGrid">
-        <!-- JavaScript ile otomatik doldurulacak -->
+        <!-- JS ile dolacak -->
     </main>
 
-    <!-- Sepet / Teklif Sabit Alt Barı -->
+    <!-- Sabit Alt Bar / Sepet Özeti -->
     <div class="cart-bar" id="cartBar">
         <div class="cart-info">
             <span id="cartCount">0 Ürün Seçildi</span>
-            <span class="cart-total">Özel Teklif Bekliyor</span>
+            <span class="cart-total">Teklif İçin Hazır</span>
         </div>
-        <button id="whatsappBtn" class="whatsapp-btn">
-            💬 WhatsApp ile Teklif Al
+        <button id="openCartModalBtn" class="whatsapp-btn">
+            🛒 Sepeti Gör & Teklif Al
         </button>
     </div>
 
-    <!-- Giriş / Kayıt Modalı (Penceresi) -->
+    <!-- Ürün Detay Modalı -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeDetail">&times;</span>
+            <div class="modal-img-big">🛞</div>
+            <h2 id="detailTitle">Ürün Adı</h2>
+            <p id="detailDesc" class="detail-desc">Ürün açıklaması burada yer alacak.</p>
+            <div class="specs-box">
+                <span>Uyumlu Modeller: <strong id="detailCompat">Tüm Araçlar</strong></span>
+            </div>
+            <button id="modalActionBtn" class="submit-btn">Sepete Ekle</button>
+        </div>
+    </div>
+
+    <!-- Sepet & Teklif Onay Modalı -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeCartModal">&times;</span>
+            <h2>Sipariş / Teklif Özeti</h2>
+            <div id="cartItemList" class="cart-item-list">
+                <!-- Seçilen ürünler listelenecek -->
+            </div>
+            <div class="form-group" style="margin-top: 15px;">
+                <label>Özel Sipariş / Notunuz (İsteğe Bağlı)</label>
+                <textarea id="orderNote" placeholder="Örn: Broadway uyumlu olsun, siyah renk..." rows="2"></textarea>
+            </div>
+            <button id="sendWhatsappOrderBtn" class="whatsapp-btn-full">
+                💬 WhatsApp ile Gönder (0551 144 14 95)
+            </button>
+        </div>
+    </div>
+
+    <!-- Giriş / Kayıt Modalı -->
     <div id="authModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
