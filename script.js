@@ -1,67 +1,145 @@
-// 20 Adet Ürün Verisi Oluşturma
-const productGrid = document.getElementById('productGrid');
-let selectedProducts = [];
-let isRegisterMode = false;
+// 20 Adet Ürün Verisi ve Kategorileri
+const products = [];
+const categories = ['jant', 'ic', 'isik'];
 
-// 20 Tane Ürün Listesi
 for (let i = 1; i <= 20; i++) {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.dataset.id = i;
-    card.innerHTML = `
-        <div>
-            <div class="product-img-placeholder">🛞</div>
-            <div class="product-name">Ürün ${i}</div>
-            <div class="product-price">Özel Fiyat / Teklif</div>
-        </div>
-        <button class="select-product-btn" onclick="toggleProduct(${i})">Seç / İncele</button>
-    `;
-    productGrid.appendChild(card);
+    let cat = categories[(i - 1) % categories.length];
+    let catName = cat === 'jant' ? 'Jant & Dış' : (cat === 'ic' ? 'İç Kabin' : 'Işıklandırma');
+    products.push({
+        id: i,
+        name: `Ürün Pro-${i}`,
+        category: cat,
+        catLabel: catName,
+        price: 'Özel Teklif',
+        desc: `Dekor Es Medya güvencesiyle sunulan, birinci sınıf malzeme kalitesine sahip profesyonel Seri-${i} aksesuar parçası.`,
+        compat: i % 2 === 0 ? 'Tüm Universal Araçlar & Broadway' : 'Özel Seri / Proje Uyumlu'
+    });
 }
 
-// Ürün Seçme / Sepete Ekleme Mantığı
-function toggleProduct(id) {
-    const card = document.querySelector(`.product-card[data-id="${id}"]`);
-    const btn = card.querySelector('.select-product-btn');
-    
+let selectedProducts = [];
+let currentFilter = 'all';
+
+// Ürünleri Listeleme
+const productGrid = document.getElementById('productGrid');
+
+function renderProducts(filter = 'all') {
+    productGrid.innerHTML = '';
+    let filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+    filtered.forEach(p => {
+        let isSelected = selectedProducts.includes(p.id);
+        const card = document.createElement('div');
+        card.className = `product-card ${isSelected ? 'selected' : ''}`;
+        card.innerHTML = `
+            <div>
+                <div class="product-img-placeholder">🛞</div>
+                <div class="product-name">${p.name}</div>
+                <div class="product-price">${p.catLabel}</div>
+            </div>
+            <div class="product-actions">
+                <button class="action-btn-sm" onclick="openDetail(${p.id})">🔍 İncele</button>
+                <button class="action-btn-sm ${isSelected ? 'sel' : ''}" id="btn-sel-${p.id}" onclick="toggleSelect(${p.id})">${isSelected ? 'Seçildi ✓' +
+                    '' : '+ Seç'}</button>
+            </div>
+        `;
+        productGrid.appendChild(card);
+    });
+}
+
+// Kategori Filtreleme
+function filterCategory(cat) {
+    currentFilter = cat;
+    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    renderProducts(cat);
+}
+
+// Ürün Seç / Bırak
+function toggleSelect(id) {
     if (selectedProducts.includes(id)) {
         selectedProducts = selectedProducts.filter(item => item !== id);
-        card.classList.remove('selected');
-        btn.innerText = 'Seç / İncele';
     } else {
         selectedProducts.push(id);
-        card.classList.add('selected');
-        btn.innerText = 'Seçildi ✓';
     }
-    
+    renderProducts(currentFilter);
     updateCartBar();
 }
 
-// Alt Bar Güncelleme
 function updateCartBar() {
-    const countSpan = document.getElementById('cartCount');
-    countSpan.innerText = `${selectedProducts.length} Ürün Seçildi`;
+    document.getElementById('cartCount').innerText = `${selectedProducts.length} Ürün Seçildi`;
 }
 
-// WhatsApp Sipariş / Teklif Yönlendirmesi
-document.getElementById('whatsappBtn').addEventListener('click', () => {
-    if (selectedProducts.length === 0) {
-        alert('Lütfen teklif almak istediğiniz en az bir ürünü seçin!');
-        return;
-    }
+// Ürün Detay Modalı
+const detailModal = document.getElementById('detailModal');
+const closeDetail = document.getElementById('closeDetail');
+let activeDetailId = null;
 
-    const currentUser = localStorage.getItem('dekor_user') || 'Misafir Müşteri';
-    const productListText = selectedProducts.map(id => `Ürün ${id}`).join(', ');
+function openDetail(id) {
+    activeDetailId = id;
+    const prod = products.find(p => p.id === id);
+    document.getElementById('detailTitle').innerText = prod.name;
+    document.getElementById('detailDesc').innerText = prod.desc;
+    document.getElementById('detailCompat').innerText = prod.compat;
     
-    const message = `Merhaba, Dekor Es Medya! Aşağıdaki ürünler için teklif almak istiyorum:\n\nSeçilenler: ${productListText}\n\nKullanıcı: ${currentUser}`;
-    const encodedMessage = encodeURIComponent(message);
+    const actionBtn = document.getElementById('modalActionBtn');
+    if (selectedProducts.includes(id)) {
+        actionBtn.innerText = 'Seçimi Kaldır';
+        actionBtn.style.background = '#374151';
+    } else {
+        actionBtn.innerText = 'Sepete Ekle / Seç';
+        actionBtn.style.background = 'var(--accent)';
+    }
     
-    // WhatsApp Telefon Numarası: 0551 144 14 95
-    const phone = '905511441495';
-    window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+    detailModal.style.display = 'flex';
+}
+
+closeDetail.addEventListener('click', () => { detailModal.style.display = 'none'; });
+
+document.getElementById('modalActionBtn').addEventListener('click', () => {
+    if (activeDetailId) {
+        toggleSelect(activeDetailId);
+        detailModal.style.display = 'none';
+    }
 });
 
-// Modal / Giriş Kayıt Yönetimi
+// Sepet Modalı ve WhatsApp Gönderimi
+const cartModal = document.getElementById('cartModal');
+const openCartModalBtn = document.getElementById('openCartModalBtn');
+const closeCartModal = document.getElementById('closeCartModal');
+const cartItemList = document.getElementById('cartItemList');
+
+openCartModalBtn.addEventListener('click', () => {
+    if (selectedProducts.length === 0) {
+        alert('Lütfen teklif almak için en az bir ürün seçin!');
+        return;
+    }
+    cartItemList.innerHTML = '';
+    selectedProducts.forEach(id => {
+        const prod = products.find(p => p.id === id);
+        const row = document.createElement('div');
+        row.className = 'cart-item-row';
+        row.innerHTML = `<span>${prod.name}</span><strong>${prod.catLabel}</strong>`;
+        cartItemList.appendChild(row);
+    });
+    cartModal.style.display = 'flex';
+});
+
+closeCartModal.addEventListener('click', () => { cartModal.style.display = 'none'; });
+
+// WhatsApp Entegrasyon Butonu (0551 144 14 95)
+document.getElementById('sendWhatsappOrderBtn').addEventListener('click', () => {
+    const currentUser = localStorage.getItem('dekor_user') || 'Misafir Müşteri';
+    const note = document.getElementById('orderNote').value;
+    const productNames = selectedProducts.map(id => products.find(p => p.id === id).name).join(', ');
+
+    let message = `Merhaba, Dekor Es Medya! Yeni bir teklif/sipariş talebim var:\n\nSeçilenler: ${productNames}\nKullanıcı: ${currentUser}`;
+    if (note) message += `\nNot: ${note}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/905511441495?text=${encodedMessage}`, '_blank');
+});
+
+// Giriş / Kayıt Modal Mantığı
 const modal = document.getElementById('authModal');
 const authBtn = document.getElementById('authBtn');
 const closeModal = document.getElementById('closeModal');
@@ -73,6 +151,7 @@ const authForm = document.getElementById('authForm');
 const userProfile = document.getElementById('userProfile');
 const userNameDisplay = document.getElementById('userNameDisplay');
 const logoutBtn = document.getElementById('logoutBtn');
+let isRegisterMode = false;
 
 authBtn.addEventListener('click', () => { modal.style.display = 'flex'; });
 closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
@@ -96,15 +175,8 @@ authForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.getElementById('emailInput').value;
     const name = document.getElementById('fullName').value || email.split('@')[0];
-
-    if (isRegisterMode) {
-        localStorage.setItem('dekor_user', name);
-        alert('Kayıt başarılı! Giriş yapıldı.');
-    } else {
-        localStorage.setItem('dekor_user', name);
-        alert('Giriş başarılı!');
-    }
-
+    localStorage.setItem('dekor_user', name);
+    alert(isRegisterMode ? 'Kayıt başarılı!' : 'Giriş başarılı!');
     modal.style.display = 'none';
     checkUserSession();
 });
@@ -126,5 +198,6 @@ logoutBtn.addEventListener('click', () => {
     checkUserSession();
 });
 
-// Sayfa açıldığında oturumu kontrol et
+// İlk Çalıştırma
+renderProducts('all');
 checkUserSession();
